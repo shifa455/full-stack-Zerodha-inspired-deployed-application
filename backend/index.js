@@ -20,6 +20,11 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+app.get("/", (req, res) => {
+  res.send("Backend is running!");
+});
+
+
 // app.get('/Holdings', async (req, res) => {
 //   let tempHoldings = [
 //     {
@@ -229,7 +234,9 @@ app.post("/newOrder", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log("Server is running on port");
-  mongoose.connect(uri);
-  console.log("Db connected successfully");
+  console.log(`Server is running on port ${PORT}`);
+  mongoose.connect(uri)
+    .then(() => console.log("Db connected successfully"))
+    .catch((err) => console.error("Db connection failed:", err));
 });
+

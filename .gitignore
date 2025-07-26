@@ -1,0 +1,6 @@
+.env
+node_modules/
+* text=auto
+*.js text eol=lf
+*.ts text eol=lf
+*.css text eol=lf
